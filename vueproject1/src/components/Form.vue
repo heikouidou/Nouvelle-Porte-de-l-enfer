@@ -35,8 +35,8 @@
           },
           6: {
             qNum: 6,
-            hint: "おつかれさまでした。引越し先のアカウントはこちらです。",
-            answer: "アドレス"
+            hint: "",
+            answer: ""
           }
         }
         ,
@@ -61,6 +61,10 @@
       <button @click="onClickEmit">進む</button>
     </div>
     <div v-else-if="count == 6">
+      おつかれさまでした。引越し先のアカウントはこちら（https://x.com/Es3697979155987）です。<br />
+      フォローリクエストに加えて元の鍵垢の「ﾐ゛-------ｯ!!!!」（https://x.com/parallel_ladr18/status/1948179962709880992）という<br />
+      ツイートにいいねしてくれた方のみお通しします。<br />
+      めんどくさくて申し訳ないです。
     </div>
     <div v-else>
       <label>Answer:<input type="text" v-model="answer"></label>
