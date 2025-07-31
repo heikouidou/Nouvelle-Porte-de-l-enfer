@@ -3,6 +3,11 @@
     data() {
       return {
         questions: {
+          0: {
+            qNum: 0,
+            hint: "この門をくぐる者は一切の希望を捨てよ",
+            answer: ""
+          },
           1:{
             qNum: 1,
             hint: "2ch発祥、初めて書き込みをする前にまずはしばらく場の様子をよく見学するよう促す言葉（6文字）",
@@ -34,11 +39,15 @@
             answer: "アドレス"
           }
         }
+        ,
+        answer: "",
+        count:0
       }
     },
     methods: {
       onClickEmit() {
         this.$emit('emit-event', this.questions);
+        this.count += 1;
       }
     }
   }
@@ -46,9 +55,13 @@
 
 <template>
   <div id="emit-area">
-    <p>Emit Area</p>
-    <label>Text:<input type="text" v-model="questions"></label>
-    <button @click="onClickEmit">送信</button>
+    <div v-if="count == 0">
+      <button @click="onClickEmit">進む</button>
+    </div>
+    <div v-else>
+      <label>Answer:<input type="text" v-model="answer"></label>
+      <button @click="onClickEmit">回答</button>
+    </div>
   </div>
 </template>
 

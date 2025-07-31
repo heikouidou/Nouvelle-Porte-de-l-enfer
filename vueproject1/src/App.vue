@@ -8,12 +8,16 @@
     data() {
       return {
         result1: '',
+        recieved:'この門をくぐる者は一切の希望を捨てよ',
+        count:0
       }
     },
     methods: {
       receive(data1) {
         //data1,data2は子コンポーネントから受け取った値
-        this.result1 = data1[1];
+        this.count += 1;
+        this.result1 = data1[this.count];
+        this.recieved = this.result1.hint;
       }
     }
   };
@@ -24,8 +28,7 @@
     <div>
     </div>
     <div class="wrapper">
-      <p>Result Area</p>
-      <p>Result Text:{{result1.hint}}</p>
+      <p>{{recieved}}</p>
       <Form @emit-event="receive"></Form>
     </div>
   </header>
