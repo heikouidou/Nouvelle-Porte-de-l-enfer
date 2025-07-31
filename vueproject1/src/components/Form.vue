@@ -46,8 +46,10 @@
     },
     methods: {
       onClickEmit() {
-        this.$emit('emit-event', this.questions);
-        this.count += 1;
+        if (this.answer == this.questions[this.count].answer) {
+          this.$emit('emit-event', this.questions);
+          this.count += 1;
+        }
       }
     }
   }
@@ -57,6 +59,8 @@
   <div id="emit-area">
     <div v-if="count == 0">
       <button @click="onClickEmit">進む</button>
+    </div>
+    <div v-else-if="count == 6">
     </div>
     <div v-else>
       <label>Answer:<input type="text" v-model="answer"></label>
